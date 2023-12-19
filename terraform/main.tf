@@ -13,8 +13,8 @@ provider "aws" {
   region     = "us-east-1"
 }
 
-resource "aws_security_group" "web_app" {
-  name        = "web_app"
+resource "aws_security_group" "my-app" {
+  name        = "my-app"
   description = "security group"
   ingress {
     from_port   = 80
@@ -37,20 +37,20 @@ resource "aws_security_group" "web_app" {
   }
 
   tags= {
-    Name = "web_app"
+    Name = "my-app"
   }
 }
 
-resource "aws_instance" "webapp_instance" {
+resource "aws_instance" "myapp_instance" {
   ami           = "ami-0669b163befffbdfc"
   instance_type = "t2.micro"
-  security_groups= ["web_app"]
+  security_groups= ["my-app"]
   tags = {
-    Name = "webapp_instance"
+    Name = "myapp_instance"
   }
 }
 
 output "instance_public_ip" {
-  value     = aws_instance.webapp_instance.public_ip
+  value     = aws_instance.myapp_instance.public_ip
   sensitive = true
 }
