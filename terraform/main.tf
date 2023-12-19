@@ -10,7 +10,7 @@ terraform {
 
 # Configure the AWS provider
 provider "aws" {
-  region     = "us-east-1d"
+  region     = "eu-central-1"
 }
 
 resource "aws_security_group" "web_app" {
